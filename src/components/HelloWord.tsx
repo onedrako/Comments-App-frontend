@@ -1,17 +1,23 @@
+import React from 'react'
+// import { setState } from '../redux/slices/stateSlice'
+// import { useDispatch, useSelector } from 'react-redux'
+import { useGetData } from '@hooks/useGetData'
 import config from '../../config/index'
-import React, { useEffect } from 'react'
-import { setState } from '../redux/slices/stateSlice'
-import { useDispatch, useSelector } from 'react-redux'
 
 const HelloWorld = () => {
-  const dispatch = useDispatch()
-  const state = useSelector((state: any) => state.state)
+  // const dispatch = useDispatch()
+  // const state = useSelector((state: any) => state.state)
+  const [data, loading, error] = useGetData('/users')
 
-  useEffect(() => {
-    dispatch(setState([1]))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(setState([1]))
+  // }, [])
 
-  console.log(state)
+  // console.log(state)
+
+  console.log(data)
+  console.log(loading)
+  console.log(error)
 
   return (
     <>

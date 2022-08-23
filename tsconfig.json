@@ -11,11 +11,11 @@
         // "@assets/*": ["assets/*"],
         "@components/*": ["components/*"],
         // "@customTypes/*": ["types/*"],
-        // "@hooks/*": ["hooks/*"],
+        "@hooks/*": ["hooks/*"],
         "@pages/*": ["pages/*"],
         "@redux/*": ["redux/*"],
         "@styles/*": ["styles/*"],
-        // "@utils/*": ["utils/*"]
+        "@utils/*": ["utils/*"]
       },
       "allowJs": true,
       "skipLibCheck": true,
