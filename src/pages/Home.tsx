@@ -1,9 +1,9 @@
 import React from 'react'
-import { HelloWorld } from '@components/HelloWord'
+import { Comments } from '@components/Comments'
 
 const Home = () => {
   return (
-    <HelloWorld />
+    <Comments />
   )
 }
 

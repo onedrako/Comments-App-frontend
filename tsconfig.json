@@ -10,7 +10,7 @@
       "paths": {
         // "@assets/*": ["assets/*"],
         "@components/*": ["components/*"],
-        // "@customTypes/*": ["types/*"],
+        "@customTypes/*": ["types/*"],
         "@hooks/*": ["hooks/*"],
         "@pages/*": ["pages/*"],
         "@redux/*": ["redux/*"],
