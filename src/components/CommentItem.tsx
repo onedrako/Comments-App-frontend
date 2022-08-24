@@ -1,5 +1,7 @@
 import { commentsType } from '@customTypes/commentTypes'
 import { setUpdateData } from '@redux/slices/uiSlice'
+import { CommentItemStyled } from '@styles/comments/CommentItem'
+import { ActionButtonStyled } from '@styles/comments/globalStyledElements'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CommentsService } from '../service/comments.service'
@@ -21,19 +23,18 @@ const CommentItem = ({ comment }: {comment: commentsType}) => {
   }
 
   return (
-    <div>
-    <p>{comment.email}</p>
-    <p>{comment.comment}</p>
+    <CommentItemStyled>
+      <p className='comment_email'>{comment.email}</p>
+      <p className='comment_body'>{comment.comment}</p>
 
-    <div>
-      {isEditing && <UpdateComment changeState={setIsEditing} commentId={comment.id} />}
-      {!isDeleting && <button onClick={() => setIsEditing(!isEditing) }>{!isEditing ? 'Edit' : 'Cancel'}</button>}
+      <div className='comment_actions'>
+        {isEditing && <UpdateComment changeState={setIsEditing} commentId={comment.id} />}
+        {!isDeleting && !isEditing && <ActionButtonStyled type="button" onClick={() => setIsEditing(!isEditing) }>Edit</ActionButtonStyled>}
 
-      {isDeleting && <button onClick={() => handleDelete(comment.id)} >Confirm Delete</button>}
-      {!isEditing && (<button onClick={() => setIsDeleting(!isDeleting)}>{!isDeleting ? 'Delete' : 'Cancel'}</button>)}
-    </div>
-
-  </div>
+        {isDeleting && <button onClick={() => handleDelete(comment.id)} >Confirm Delete</button>}
+        {!isEditing && (<ActionButtonStyled type="button" className='comment_actions--item' onClick={() => setIsDeleting(!isDeleting)}>{!isDeleting ? 'Delete' : 'Cancel'}</ActionButtonStyled>)}
+      </div>
+    </CommentItemStyled>
   )
 }
 

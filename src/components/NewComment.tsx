@@ -7,6 +7,7 @@ import { CommentsService } from '../service/comments.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
 import { NewCommentContainerStyled, NewCommentFormStyled } from '@styles/comments/NewComment'
+import { ConfirmButtonStyled, ErrorMessageStyled, TextAreaStyled } from '@styles/comments/globalStyledElements'
 
 const NewComment = () => {
   const service = new CommentsService()
@@ -44,14 +45,14 @@ const NewComment = () => {
     <NewCommentContainerStyled>
       <h2>Leave Comments</h2>
 
-      <NewCommentFormStyled>
+      <NewCommentFormStyled onSubmit={() => formik.handleSubmit()} >
         <input {...formik.getFieldProps('email')} type="text" placeholder='email'/>
-        {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
+        {formik.touched.email && formik.errors.email && <ErrorMessageStyled>{formik.errors.email}</ErrorMessageStyled>}
 
-        <textarea {...formik.getFieldProps('comment')} placeholder='Add a comment...' />
-        {formik.touched.comment && formik.errors.comment && <div>{formik.errors.comment}</div> }
+        <TextAreaStyled {...formik.getFieldProps('comment')} placeholder='Add a comment...' />
+        {formik.touched.comment && formik.errors.comment && <ErrorMessageStyled >{formik.errors.comment}</ErrorMessageStyled> }
 
-        <button onClick={() => formik.handleSubmit()} type="button">Comment</button>
+        <ConfirmButtonStyled onClick={() => formik.handleSubmit()} type="button">Comment</ConfirmButtonStyled>
       </NewCommentFormStyled>
 
     </NewCommentContainerStyled>

@@ -4,6 +4,8 @@ import { CommentsService } from '../service/comments.service'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
+import { UpdateCommentFormStyled } from '@styles/comments/UpdateComment'
+import { ActionButtonStyled, ConfirmButtonStyled, ErrorMessageStyled, TextAreaStyled } from '@styles/comments/globalStyledElements'
 
 const UpdateComment = ({ changeState, commentId } : {changeState: React.Dispatch<React.SetStateAction<boolean>>, commentId: number}) => {
   const service = new CommentsService()
@@ -21,16 +23,19 @@ const UpdateComment = ({ changeState, commentId } : {changeState: React.Dispatch
       dispatch(setUpdateData(!updateData))
     },
     validationSchema: Yup.object({
-      comment: Yup.string().required('Please write your comment before updating')
+      comment: Yup.string().required('Please write your comment before sending changes')
     })
   })
 
   return (
-    <form>
-      <input {...formik.getFieldProps('comment')} type="textarea" />
-      {formik.touched.comment && formik.errors.comment && <div>{formik.errors.comment}</div> }
-      <button onClick={() => formik.handleSubmit()} type="button">Confirm Changes</button>
-    </form>
+    <UpdateCommentFormStyled>
+      <TextAreaStyled {...formik.getFieldProps('comment')} placeholder="Updated comment..." />
+      {formik.touched.comment && formik.errors.comment && <ErrorMessageStyled>{formik.errors.comment}</ErrorMessageStyled> }
+      <div className='actions-container'>
+        <ConfirmButtonStyled className='update_button' onClick={() => formik.handleSubmit()} type="button">Confirm Changes</ConfirmButtonStyled>
+        <ActionButtonStyled type="button" onClick={() => changeState(false)} >Cancel</ActionButtonStyled>
+      </div>
+    </UpdateCommentFormStyled>
   )
 }
 
