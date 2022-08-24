@@ -1,14 +1,25 @@
+// Dependencies
 import React from 'react'
-import { createComment } from '@customTypes/commentTypes'
-import safeHTML from '@utils/sanitizeHTML'
-import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { CommentsService } from '../service/comments.service'
+import { useFormik } from 'formik'
+// Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
-import { NewCommentContainerStyled, NewCommentFormStyled } from '@styles/comments/NewComment'
-import { ConfirmButtonStyled, ErrorMessageStyled, TextAreaStyled } from '@styles/comments/globalStyledElements'
 
+// Service
+import { CommentsService } from '../service/comments.service'
+
+// Utils
+import safeHTML from '@utils/sanitizeHTML'
+
+// Styled Components
+import { ConfirmButtonStyled, ErrorMessageStyled, TextAreaStyled } from '@styles/comments/globalStyledElements'
+import { NewCommentContainerStyled, NewCommentFormStyled } from '@styles/comments/NewComment'
+
+// Custom Types
+import { createComment } from '@customTypes/commentTypes'
+
+// Component ald logic to create a new comment and send it to the db using the service
 const NewComment = () => {
   const service = new CommentsService()
   const dispatch = useDispatch()

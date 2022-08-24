@@ -1,11 +1,21 @@
-import { commentsType } from '@customTypes/commentTypes'
+// Dependencies
+import React, { useState } from 'react'
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
+
+// Service
+import { CommentsService } from '../service/comments.service'
+
+// Components
+import { UpdateComment } from './UpdateComment'
+
+// Styled Components
 import { CommentItemStyled } from '@styles/comments/CommentItem'
 import { ActionButtonStyled } from '@styles/comments/globalStyledElements'
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { CommentsService } from '../service/comments.service'
-import { UpdateComment } from './UpdateComment'
+
+// Custom Types
+import { commentsType } from '@customTypes/commentTypes'
 
 // Component that render a comment with the update and delete options
 const CommentItem = ({ comment }: {comment: commentsType}) => {

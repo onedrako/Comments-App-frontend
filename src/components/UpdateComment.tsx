@@ -1,12 +1,19 @@
-import { useFormik } from 'formik'
+// Dependencies
 import React from 'react'
-import { CommentsService } from '../service/comments.service'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
+// Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
+
+// Service
+import { CommentsService } from '../service/comments.service'
+
+// Styled Components
 import { UpdateCommentFormStyled } from '@styles/comments/UpdateComment'
 import { ActionButtonStyled, ConfirmButtonStyled, ErrorMessageStyled, TextAreaStyled } from '@styles/comments/globalStyledElements'
 
+// Component to update a comment and send it to the db using the service, setting the comment to previos view before starting to update
 const UpdateComment = ({ changeState, commentId } : {changeState: React.Dispatch<React.SetStateAction<boolean>>, commentId: number}) => {
   const service = new CommentsService()
   const dispatch = useDispatch()
@@ -31,10 +38,12 @@ const UpdateComment = ({ changeState, commentId } : {changeState: React.Dispatch
     <UpdateCommentFormStyled>
       <TextAreaStyled {...formik.getFieldProps('comment')} placeholder="Updated comment..." />
       {formik.touched.comment && formik.errors.comment && <ErrorMessageStyled>{formik.errors.comment}</ErrorMessageStyled> }
+
       <div className='actions-container'>
         <ConfirmButtonStyled className='update_button' onClick={() => formik.handleSubmit()} type="button">Confirm Changes</ConfirmButtonStyled>
         <ActionButtonStyled type="button" onClick={() => changeState(false)} >Cancel</ActionButtonStyled>
       </div>
+
     </UpdateCommentFormStyled>
   )
 }

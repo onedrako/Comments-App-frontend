@@ -1,12 +1,21 @@
+// Dependencies
 import React from 'react'
-import { useGetData } from '@hooks/useGetData'
-import { CommentsList } from './CommentsList'
-import { commentsType } from '@customTypes/commentTypes'
-import { NewComment } from './NewComment'
 import { useSelector } from 'react-redux'
 
+// Custom Hooks
+import { useGetData } from '@hooks/useGetData'
+
+// Components
+import { NewComment } from './NewComment'
+import { CommentsList } from './CommentsList'
+
+// Styled Components
 import { CommentsContainerStyled } from '@styles/comments/CommentsContainer'
 
+// Custom Types
+import { commentsType } from '@customTypes/commentTypes'
+
+// Component to render the comments section, with the principal to add a new one and the list of comments
 const Comments = () => {
   const updateData = useSelector((state: any) => state.ui.updateData)
   const [data, loading, error] = useGetData<commentsType>('/comments', updateData)

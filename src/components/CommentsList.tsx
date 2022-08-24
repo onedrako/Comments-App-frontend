@@ -1,6 +1,6 @@
 import React from 'react'
-import { commentsType } from '@customTypes/commentTypes'
 import CommentItem from './CommentItem'
+import { commentsType } from '@customTypes/commentTypes'
 
 type props = {
   comments: commentsType[]
