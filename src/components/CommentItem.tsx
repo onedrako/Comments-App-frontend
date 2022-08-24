@@ -1,5 +1,7 @@
 import { commentsType } from '@customTypes/commentTypes'
+import { setUpdateData } from '@redux/slices/uiSlice'
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { CommentsService } from '../service/comments.service'
 import { UpdateComment } from './UpdateComment'
 
@@ -9,10 +11,13 @@ const CommentItem = ({ comment }: {comment: commentsType}) => {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const service = new CommentsService()
+  const dispatch = useDispatch()
+  const updateData = useSelector((state: any) => state.ui.updateData)
 
   const handleDelete = async (id: number) => {
     await service.deleteComment(id)
     setIsDeleting(false)
+    dispatch(setUpdateData(!updateData))
   }
 
   return (
