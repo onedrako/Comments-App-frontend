@@ -1,6 +1,6 @@
 {
 	"version": 2,
-	"name": "pokemon-team-builder",
+	"name": "CommentApp",
 	"builds": [
 		{
 			"use": "@vercel/static-build",
