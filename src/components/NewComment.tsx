@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { CommentsService } from '../service/comments.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUpdateData } from '@redux/slices/uiSlice'
+import { NewCommentContainerStyled, NewCommentFormStyled } from '@styles/comments/NewComment'
 
 const NewComment = () => {
   const service = new CommentsService()
@@ -40,19 +41,20 @@ const NewComment = () => {
   })
 
   return (
-    <div>
-      <h1>Leave Comments</h1>
-      <form>
+    <NewCommentContainerStyled>
+      <h2>Leave Comments</h2>
 
-        <input {...formik.getFieldProps('email')} type="text" />
+      <NewCommentFormStyled>
+        <input {...formik.getFieldProps('email')} type="text" placeholder='email'/>
         {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
 
-        <input {...formik.getFieldProps('comment')} type="textarea" />
+        <textarea {...formik.getFieldProps('comment')} placeholder='Add a comment...' />
         {formik.touched.comment && formik.errors.comment && <div>{formik.errors.comment}</div> }
 
         <button onClick={() => formik.handleSubmit()} type="button">Comment</button>
-      </form>
-    </div>
+      </NewCommentFormStyled>
+
+    </NewCommentContainerStyled>
   )
 }
 
