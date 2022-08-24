@@ -7,6 +7,9 @@ import { NewComment } from './NewComment'
 const Comments = () => {
   const [data, loading, error] = useGetData<commentsType>('/comments')
 
+  console.log(loading)
+  console.log(error)
+
   return (
     <main>
       <section>
