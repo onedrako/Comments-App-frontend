@@ -1,4 +1,4 @@
-Hi, this project is running in vercel on: https://comments-app-onedrako.vercel.app/   (maybe the api get on after 7 seconds because heroku free plan get the server off if nobady is using it)
+Hi, this project is running in vercel on: https://comment-app-gilt.vercel.app/  (maybe the api get on after 7 seconds because heroku free plan get the server off if nobady is using it)
 
 React, typescript, styled components, redux (toolkit), formik, and yup to manage the database queries were used for this project.
 
