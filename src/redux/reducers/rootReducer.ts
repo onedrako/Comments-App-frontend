@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import stateSlice from '@redux/slices/stateSlice'
+import uiSlice from '@redux/slices/uiSlice'
 
 const rootReducer = combineReducers({
-  state: stateSlice
+  ui: uiSlice
 })
 
 export default rootReducer

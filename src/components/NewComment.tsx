@@ -4,24 +4,33 @@ import safeHTML from '@utils/sanitizeHTML'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { CommentsService } from '../service/comments.service'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUpdateData } from '@redux/slices/uiSlice'
 
 const NewComment = () => {
   const service = new CommentsService()
+  const dispatch = useDispatch()
+  const updateData = useSelector((state: any) => state.ui.updateData)
 
   const formik = useFormik({
     initialValues: {
       email: '',
       comment: ''
     },
-    onSubmit: (values, actions) => {
+    onSubmit: async (values, actions) => {
       const createCommentData: createComment = {
         email: values.email,
         comment: values.comment
       }
 
       const safeData = safeHTML(createCommentData)
-      service.createComment(safeData)
-      actions.resetForm()
+      try {
+        await service.createComment(safeData)
+        actions.resetForm()
+        dispatch(setUpdateData(!updateData))
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     validationSchema: Yup.object({

@@ -4,8 +4,8 @@ import { api } from '@utils/axiosConfig'
 // This Hook works to get simple data from api
 // endPoint: is the url where the data is stored,
 
-const useGetData = <DataType>(endPoint: string): [DataType[], boolean, any] => {
-  const [data, setData] = useState<any[]>([])
+const useGetData = <DataType>(endPoint: string, updater?: boolean): [DataType[], boolean, any] => {
+  const [data, setData] = useState<DataType[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<any>(null)
 
@@ -23,7 +23,7 @@ const useGetData = <DataType>(endPoint: string): [DataType[], boolean, any] => {
     }
     fetchData()
   }
-  , [])
+  , [updater])
 
   return [data, loading, error]
 }

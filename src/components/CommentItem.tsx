@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { CommentsService } from '../service/comments.service'
 import { UpdateComment } from './UpdateComment'
 
-// Compponent that render a comment with the update and delete options
+// Component that render a comment with the update and delete options
 const CommentItem = ({ comment }: {comment: commentsType}) => {
   const [isEditing, setIsEditing] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)

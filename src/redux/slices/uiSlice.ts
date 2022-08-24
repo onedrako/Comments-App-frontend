@@ -11,24 +11,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // )
 
 type StateTypes = {
-  state: any[]
+  updateData: boolean
 }
 
 // state
 const initialState: StateTypes = {
-  state: []
+  updateData: false
 }
 
-export const stateSlice = createSlice({
-  name: 'state',
+export const uiSlice = createSlice({
+  name: 'ui',
   initialState,
   reducers: {
-    setState: (state: any, action: PayloadAction<any[]>) => {
-      state.state = action.payload
+    setUpdateData: (state: any, action: PayloadAction<boolean>) => {
+      state.updateData = action.payload
     }
   }
 })
 
-export const { setState } = stateSlice.actions
+export const { setUpdateData } = uiSlice.actions
 
-export default stateSlice.reducer
+export default uiSlice.reducer
